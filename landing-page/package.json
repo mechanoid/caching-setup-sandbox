@@ -1,0 +1,15 @@
+{
+  "name": "landing-page",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Falk Hoppe <falkhoppe81@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "accepts": "^1.3.5",
+    "express": "^4.16.4"
+  }
+}

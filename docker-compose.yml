@@ -1,0 +1,40 @@
+version: '3'
+services:
+  integration:
+    build:
+      context: .
+    volumes:
+      - ./my-server.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - landing-page:landing-page
+      - content-source:content-source
+    ports:
+      - "8080:8080"
+    environment:
+      - NGINX_PORT=8080
+
+  landing-page:
+    image: "node"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./landing-page:/home/node/app
+    command: "npm start"
+    ports:
+      - "3000:3000"
+
+  content-source:
+    image: "node"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      - ./content-source:/home/node/app
+    command: "npm start"
+    ports:
+      - "3001:3001"
